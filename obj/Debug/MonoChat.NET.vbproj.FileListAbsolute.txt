@@ -1,0 +1,11 @@
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.NET.exe
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.NET.xml
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.NET.pdb
+Z:\dev\vb.net_old\Clients\MonoChat.NET\bin\Debug\MonoChat.NET.exe
+Z:\dev\vb.net_old\Clients\MonoChat.NET\bin\Debug\MonoChat.NET.pdb
+Z:\dev\vb.net_old\Clients\MonoChat.NET\bin\Debug\MonoChat.NET.xml
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\ResolveAssemblyReference.cache
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.frmMain.resources
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.Resources.resources
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.frmNewConnect.resources
+Z:\dev\vb.net_old\Clients\MonoChat.NET\obj\Debug\MonoChat.NET.vbproj.GenerateResource.Cache
