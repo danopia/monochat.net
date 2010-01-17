@@ -30,17 +30,17 @@ worked: Dim worked As Boolean = False
         Try
             If TmrAntiFlood.Enabled Then
                 If AntiFlood < 4 Then
-                    Socket.Send(System.Text.Encoding.ASCII.GetBytes(Data.Replace(vbCr, "").Replace(vbLf, "") & vbCrLf))
+                    Socket.Send(System.Text.Encoding.UTF8.GetBytes(Data.Replace(vbCr, "").Replace(vbLf, "") & vbCrLf))
                     frmMain.LogIRC(Chr(3) & "14>>> " & Data, Network)
                 ElseIf AntiFlood < 5 Then
-                    Socket.Send(System.Text.Encoding.ASCII.GetBytes("PRIVMSG danopia :I spy a flood" & vbCrLf))
+                    Socket.Send(System.Text.Encoding.UTF8.GetBytes("PRIVMSG danopia :I spy a flood" & vbCrLf))
                     frmMain.LogIRC(Chr(3) & "3Flood prevented send of this packet: " & Data)
                 Else
                     frmMain.LogIRC(Chr(3) & "3A big flood value (" & AntiFlood & " prevented send of this packet: " & Data)
                 End If
                 AntiFlood += 1 + (Data.Length / 256)
             Else
-                Socket.Send(System.Text.Encoding.ASCII.GetBytes(Data.Replace(vbCr, "").Replace(vbLf, "") & vbCrLf))
+                Socket.Send(System.Text.Encoding.UTF8.GetBytes(Data.Replace(vbCr, "").Replace(vbLf, "") & vbCrLf))
             End If
         Catch ex As Exception
             frmMain.LogIRC(Chr(3) & "4Error sending packet", Network)
@@ -71,7 +71,7 @@ worked: Dim worked As Boolean = False
             End If
         End If
         Array.Resize(Buffer, Length)
-        Dim Packet As String = System.Text.Encoding.ASCII.GetString(Buffer)
+        Dim Packet As String = System.Text.Encoding.UTF8.GetString(Buffer)
         If Packet.Contains(vbCrLf) Then Packet = Packet.Substring(0, Packet.IndexOf(vbCrLf) + 2)
         Length = Packet.Length
         Array.Resize(Buffer, Length)
@@ -450,7 +450,7 @@ StopBF:                                         Send("PRIVMSG " & Args(2) & " :E
                                         '            Dim Owner As String = ""
                                         '            If IsBot Then Owner = Args(8)
                                         '            Dim MD5er As New System.Security.Cryptography.MD5CryptoServiceProvider()
-                                        '            Dim Code As String = Convert.ToBase64String(MD5er.ComputeHash(System.Text.Encoding.ASCII.GetBytes(Nick & NewColor & IsBot & Rnd())))
+                                        '            Dim Code As String = Convert.ToBase64String(MD5er.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Nick & NewColor & IsBot & Rnd())))
                                         '            Send("PRIVMSG #l0gg3r :A WebUI user requested that " & Nick & "'s nick color in the frmMain.LogIRCs be changed to " & NewColor & IIf(IsBot, ";font-style:italic", "") & ". I have PMed him a code to send back (" & Code & "), or just say `approve " & Code)
                                         '            Send("PRIVMSG " & Nick & " :Say """ & Code & """ without the quotes back to me to make that your color in my frmMain.LogIRCs.")
                                         '            ColorRequests.Add(Code, New ColorRequest(Nick, Nick.ToLower, Color, IsBot, Owner, Owner.ToLower()))
