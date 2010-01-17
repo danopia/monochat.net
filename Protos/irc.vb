@@ -103,7 +103,7 @@ worked: Dim worked As Boolean = False
                     frmMain.LogIRC(Chr(3) & "14Please register first.", Network)
                 Case 1
                     frmMain.LogIRC(Chr(3) & "14Welcome.", Network)
-                    Send("JOIN #l0gg3r,#botters,#mukt.in,#danopia,#mononet")
+                    Send("JOIN #programming")
                     TmrAntiFlood.Enabled = True
                     Stage = 2
                     frmMain.SetStatus(Stage)
