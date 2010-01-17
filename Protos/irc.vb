@@ -76,15 +76,13 @@ worked: Dim worked As Boolean = False
         _buffer &= System.Text.Encoding.UTF8.GetString(Buffer, 0, Length)
 
         While _buffer.Contains(vbNewLine)
-            Length = _buffer.IndexOf(vbNewLine) + vbNewLine.Length
+            Length = _buffer.IndexOf(vbNewLine)
             HandlePacket(_buffer.Substring(0, Length))
-            _buffer = _buffer.Remove(0, Length)
+            _buffer = _buffer.Remove(0, Length + vbNewLine.Length)
         End While
     End Function
 
     Public Sub HandlePacket(ByVal Packet As String)
-        If Packet.Contains(vbCrLf) Then Packet = Packet.Substring(0, Packet.IndexOf(vbCrLf) + 2)
-        
         Try
             Packet = Packet.TrimEnd(vbCr, vbLf)
             'Packet = System.Web.HttpUtility.HtmlEncode(Packet)
