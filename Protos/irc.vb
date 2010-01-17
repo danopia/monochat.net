@@ -6,6 +6,9 @@ Public Class IRC
     Public Network As String = "IRC"
     Public NickList As New Dictionary(Of String, List(Of String))
     Public WithEvents TmrAntiFlood As New Timers.Timer(1000)
+
+    Private _buffer As String = ""
+
     Public Sub New(ByVal Server As String, ByVal Name As String, ByVal Pass As String, ByVal RealName As String)
         Dim Port As UShort = 6667
         If Server.Contains(":") Then
@@ -52,10 +55,10 @@ worked: Dim worked As Boolean = False
         Catch ex As ObjectDisposedException
             Return False
         End Try
-        Dim Buffer(Socket.ReceiveBufferSize) As Byte
+        Dim Buffer(512) As Byte
         Dim Length As Integer
         Try
-            Length = Socket.Receive(Buffer, Socket.Available, Net.Sockets.SocketFlags.Peek)
+            Length = Socket.Receive(Buffer, 512, Net.Sockets.SocketFlags.None)
         Catch ex As Exception
         End Try
         If Socket.Connected = False Then
@@ -70,17 +73,18 @@ worked: Dim worked As Boolean = False
                 End Try
             End If
         End If
-        Array.Resize(Buffer, Length)
-        Dim Packet As String = System.Text.Encoding.UTF8.GetString(Buffer)
-        If Packet.Contains(vbCrLf) Then Packet = Packet.Substring(0, Packet.IndexOf(vbCrLf) + 2)
-        Length = Packet.Length
-        Array.Resize(Buffer, Length)
-        Try
-            Socket.Receive(Buffer, Length, Net.Sockets.SocketFlags.None)
-        Catch ex As Exception
-        End Try
-        If Socket.Connected = False Then Return False
+        _buffer &= System.Text.Encoding.UTF8.GetString(Buffer, 0, Length)
 
+        While _buffer.Contains(vbNewLine)
+            Length = _buffer.IndexOf(vbNewLine) + vbNewLine.Length
+            HandlePacket(_buffer.Substring(0, Length))
+            _buffer = _buffer.Remove(0, Length)
+        End While
+    End Function
+
+    Public Sub HandlePacket(ByVal Packet As String)
+        If Packet.Contains(vbCrLf) Then Packet = Packet.Substring(0, Packet.IndexOf(vbCrLf) + 2)
+        
         Try
             Packet = Packet.TrimEnd(vbCr, vbLf)
             'Packet = System.Web.HttpUtility.HtmlEncode(Packet)
@@ -557,7 +561,7 @@ StopBF:                                         Send("PRIVMSG " & Args(2) & " :E
             End If
         Catch ex As Exception
         End Try
-    End Function
+    End Sub
     Private Sub TmrAntiFlood_Elapsed(ByVal sender As Object, ByVal e As System.Timers.ElapsedEventArgs) Handles TmrAntiFlood.Elapsed
         If AntiFlood > 0 Then AntiFlood -= 1 Else AntiFlood = 0
     End Sub
