@@ -45,7 +45,7 @@ Partial Class frmNewConnect
         Me.btnOk.Location = New System.Drawing.Point(193, 222)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(67, 23)
-        Me.btnOk.TabIndex = 0
+        Me.btnOk.TabIndex = 9
         Me.btnOk.Text = "&OK"
         '
         'btnCancel
@@ -55,7 +55,7 @@ Partial Class frmNewConnect
         Me.btnCancel.Location = New System.Drawing.Point(266, 222)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(67, 23)
-        Me.btnCancel.TabIndex = 1
+        Me.btnCancel.TabIndex = 10
         Me.btnCancel.Text = "&Cancel"
         '
         'lblDisplay
@@ -110,7 +110,7 @@ Partial Class frmNewConnect
         Me.txtDisplay.Location = New System.Drawing.Point(76, 12)
         Me.txtDisplay.Name = "txtDisplay"
         Me.txtDisplay.Size = New System.Drawing.Size(257, 20)
-        Me.txtDisplay.TabIndex = 7
+        Me.txtDisplay.TabIndex = 1
         '
         'txtServer
         '
@@ -119,7 +119,7 @@ Partial Class frmNewConnect
         Me.txtServer.Location = New System.Drawing.Point(76, 38)
         Me.txtServer.Name = "txtServer"
         Me.txtServer.Size = New System.Drawing.Size(257, 20)
-        Me.txtServer.TabIndex = 8
+        Me.txtServer.TabIndex = 2
         '
         'txtPass
         '
@@ -128,7 +128,7 @@ Partial Class frmNewConnect
         Me.txtPass.Location = New System.Drawing.Point(76, 64)
         Me.txtPass.Name = "txtPass"
         Me.txtPass.Size = New System.Drawing.Size(257, 20)
-        Me.txtPass.TabIndex = 9
+        Me.txtPass.TabIndex = 3
         Me.txtPass.UseSystemPasswordChar = True
         '
         'txtReal
@@ -138,7 +138,7 @@ Partial Class frmNewConnect
         Me.txtReal.Location = New System.Drawing.Point(76, 90)
         Me.txtReal.Name = "txtReal"
         Me.txtReal.Size = New System.Drawing.Size(257, 20)
-        Me.txtReal.TabIndex = 10
+        Me.txtReal.TabIndex = 4
         '
         'txtNick
         '
@@ -147,7 +147,7 @@ Partial Class frmNewConnect
         Me.txtNick.Location = New System.Drawing.Point(76, 116)
         Me.txtNick.Name = "txtNick"
         Me.txtNick.Size = New System.Drawing.Size(257, 20)
-        Me.txtNick.TabIndex = 11
+        Me.txtNick.TabIndex = 5
         '
         'cmbProfile
         '
@@ -156,7 +156,7 @@ Partial Class frmNewConnect
         Me.cmbProfile.MaxDropDownItems = 50
         Me.cmbProfile.Name = "cmbProfile"
         Me.cmbProfile.Size = New System.Drawing.Size(257, 21)
-        Me.cmbProfile.TabIndex = 12
+        Me.cmbProfile.TabIndex = 8
         Me.cmbProfile.Text = "New Profile"
         '
         'lblProfile
@@ -176,7 +176,7 @@ Partial Class frmNewConnect
         Me.cmbProto.Location = New System.Drawing.Point(76, 168)
         Me.cmbProto.Name = "cmbProto"
         Me.cmbProto.Size = New System.Drawing.Size(257, 21)
-        Me.cmbProto.TabIndex = 14
+        Me.cmbProto.TabIndex = 7
         '
         'lblProto
         '
@@ -192,7 +192,7 @@ Partial Class frmNewConnect
         Me.txtAjoin.Location = New System.Drawing.Point(76, 142)
         Me.txtAjoin.Name = "txtAjoin"
         Me.txtAjoin.Size = New System.Drawing.Size(257, 20)
-        Me.txtAjoin.TabIndex = 16
+        Me.txtAjoin.TabIndex = 6
         '
         'lblAjoin
         '
@@ -205,8 +205,10 @@ Partial Class frmNewConnect
         '
         'frmNewConnect
         '
+        Me.AcceptButton = Me.btnOk
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.btnCancel
         Me.ClientSize = New System.Drawing.Size(345, 257)
         Me.Controls.Add(Me.lblAjoin)
         Me.Controls.Add(Me.txtAjoin)
