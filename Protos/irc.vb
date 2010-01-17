@@ -124,7 +124,7 @@ worked: Dim worked As Boolean = False
                         Send("PONG")
                     End If
                 Case "notice"
-                    If Not Args(1).ToLower = "auth" And Not Args(1).ToLower = "l0gg3r" Then
+                    If Not Args(1).ToLower = "auth" And Not Args(1).ToLower = MyNick.ToLower Then
                         If Args(3).StartsWith(":") Then
                             frmMain.LogIRC(Chr(3) & "5-" & Args(0).Split("!")(0) & "- " & Packet.Substring(Packet.IndexOf(":") + 1), Network, Args(2))
                         Else
@@ -132,7 +132,7 @@ worked: Dim worked As Boolean = False
                         End If
                     End If
                 Case "mode"
-                    If (Args(3) = ":+e" Or Args(3) = ":+r") And Args(2).ToLower = "l0gg3r".ToLower Then
+                    If (Args(3) = ":+e" Or Args(3) = ":+r") And Args(2).ToLower = MyNick.ToLower Then
                         Send("JOIN #l0gg3r,#botters")
                     ElseIf Args(2).StartsWith("#") Then
                         frmMain.LogIRC(Chr(3) & "3* " & Args(0).Split("!")(0) & " sets mode: " & Packet.Substring(Packet.IndexOf(Args(3))), Network, Args(2))
